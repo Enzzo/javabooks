@@ -1,14 +1,16 @@
 package ru.vasilev.license.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.vasilev.license.model.License;
-import ru.vasilev.license.model.LicenseFactory;
 import ru.vasilev.license.service.LicenseService;
 
 @RestController
@@ -29,13 +31,27 @@ public class LicenseController {
 		return ResponseEntity.ok(license);
 	}
 	
-	@PostMapping("/{licenseId}")
-	public ResponseEntity<License> createLicense(
+	@PostMapping
+	public ResponseEntity<String> createLicense(
             @PathVariable("organizationId") String organizationId,
-            @PathVariable("licenseId") String licenseId
+            @RequestBody License request
             ){
-		License license = new License();
-		licenseService.createLicense(license, organizationId);
-		return ResponseEntity.ok(license);
+		return ResponseEntity.ok(licenseService.createLicense(request, organizationId));
 	}
+	
+	@PutMapping
+	public ResponseEntity<String> updateLicense(
+			@PathVariable("organizationId") String organizationId,
+			@RequestBody License request
+            ){
+		return ResponseEntity.ok(licenseService.updateLicense(request, organizationId));
+	}
+	
+	@DeleteMapping("/{licenseId}")
+	public ResponseEntity<String> deleteLicense(
+            @PathVariable("organizationId") String organizationId,
+            @PathVariable("licenseId") String licenseId){
+		return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId));
+	}
+        ;
 }

@@ -5,12 +5,19 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import ru.vasilev.license.model.License;
-import ru.vasilev.license.model.LicenseFactory;
 
 @Service
 public class LicenseService {
-	public License getLicense(String licenseId, String organizationId) {		
-		return LicenseFactory.getInstance().createLicense(licenseId, organizationId);
+	public License getLicense(String licenseId, String organizationId) {
+		License license = new License();
+		license.setId(new Random().nextInt(1000));
+		license.setLicenseId(licenseId);
+		license.setOrganizationId(null);
+		license.setDescription("Software Product");
+		license.setProductName("Ostock");
+		license.setLicenseType("full");
+		
+		return license;
 	}
 	
 	public String createLicense(License license, String organizationId) {
