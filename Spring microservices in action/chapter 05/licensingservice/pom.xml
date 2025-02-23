@@ -30,6 +30,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<docker.image.prefix>ostock</docker.image.prefix>
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,9 +65,14 @@
 
 	<build>
 		<plugins>
+		<!--собирается при помощи mvn spring-boot:build-image -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<imageName>
+						${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+				</configuration>
 			</plugin>
 			<!-- This plugin is used to create a docker image and publish the
 			image to docker hub-->
@@ -80,9 +86,6 @@
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
-					<layers>
-						<enabled>true</enabled>
-					</layers>
 				</configuration>
 				<executions>
 					<execution>
