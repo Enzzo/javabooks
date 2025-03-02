@@ -1,6 +1,7 @@
 package tacos.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -14,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Data
 public class TacoOrder {
+	private Long id;
+	
 	@NotBlank(message = "Delivery name is required")
 	private String deliveryName;
 	
@@ -40,6 +43,8 @@ public class TacoOrder {
 	private String ccCVV;
 	
 	private List<Taco> tacos = new ArrayList<>();
+	
+	private Date placedAt;
 	
 	public TacoOrder() {
 		log.info("TacoOrder created");
