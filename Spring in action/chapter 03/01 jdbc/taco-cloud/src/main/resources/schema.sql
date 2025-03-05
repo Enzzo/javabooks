@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS taco_order;
+DROP TABLE IF EXISTS taco_order CASCADE;
 DROP TABLE IF EXISTS taco;
 DROP TABLE IF EXISTS ingredient_ref;
 DROP TABLE IF EXISTS ingredient;
@@ -13,7 +13,8 @@ CREATE TABLE taco_order(
 	cc_number varchar(16) NOT NULL,
 	cc_expiration varchar(5) NOT NULL,
 	cc_cvv varchar(3) NOT NULL,
-	placed_at timestamp NOT null
+	placed_at timestamp NOT NULL,
+	PRIMARY key(id)
 );
 
 CREATE TABLE taco(
@@ -21,19 +22,21 @@ CREATE TABLE taco(
 	name varchar(50) NOT NULL,
 	taco_order bigint NOT NULL,
 	taco_order_key bigint NOT NULL,
-	created_at timestamp NOT null
+	created_at timestamp NOT NULL,
+	PRIMARY key(id)
 );
 
 CREATE TABLE ingredient_ref(
 	ingredient varchar(4) NOT NULL,
 	taco bigint NOT NULL,
-	taco_key bigint NOT null
+	taco_key bigint NOT NULL
 );
 
 CREATE TABLE ingredient(
 	id varchar(4) NOT NULL,
-	name varchar(4) NOT NULL,
-	TYPE varchar(10) NOT null
+	name varchar(25) NOT NULL,
+	TYPE varchar(10) NOT NULL,
+	PRIMARY key(id)
 );
 
 ALTER TABLE taco

@@ -1,8 +1,13 @@
+DELETE FROM ingredient_ref;
+DELETE FROM taco;
+DELETE FROM taco_order;
+DELETE FROM ingredient;
+
 INSERT INTO ingredient (id, name, type)
 VALUES ('FLTO', 'Flour Tortilla', 'WRAP');
 
 INSERT INTO ingredient (id, name, type)
-VALUES (COTO, Corn Tortilla, 'WRAP');
+VALUES ('COTO', 'Кукуруза Tortilla', 'WRAP');
 
 INSERT INTO ingredient (id, name, type)
 VALUES ('GRBF', 'Ground Beef', 'PROTEIN');

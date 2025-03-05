@@ -1,4 +1,4 @@
-package tacos.repository;
+package tacos.data.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import tacos.model.Ingredient;
+import tacos.repository.IngredientRepository;
 
 @Repository
 public class JdbcIngredientRepository implements IngredientRepository{
@@ -28,7 +29,7 @@ public class JdbcIngredientRepository implements IngredientRepository{
 	@Override
 	public Optional<Ingredient> findById(String id) {
 		List<Ingredient> results = jdbcTemplate.query(
-				"select id, name, type fro Ingredient where id=?", 
+				"select id, name, type from Ingredient where id=?", 
 				this::mapRowToIngredient,
 				id);
 		return results.size() == 0 ? Optional.empty() : Optional.of(results.get(0));
