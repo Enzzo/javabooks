@@ -1,10 +1,13 @@
 package tacos.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
-public class TacoOrder {
+@Table
+public class TacoOrder implements Serializable{
+	private static final long seraiVersionUID = 1L;
+	
+	@Id
 	private Long id;
 	
 	@NotBlank(message = "Delivery name is required")
