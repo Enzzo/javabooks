@@ -3,8 +3,6 @@ package tacos.model;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -12,10 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
+//@Entity
 public class Taco {
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+		
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@NotNull
@@ -24,6 +24,7 @@ public class Taco {
 	
 	@NotNull
 	@Size(min = 1, message = "You must choose at least 1 ingredient")
+//	@ManyToMany
 	private List<Ingredient> ingredients;
 	
 	private Date createdAt = new Date();

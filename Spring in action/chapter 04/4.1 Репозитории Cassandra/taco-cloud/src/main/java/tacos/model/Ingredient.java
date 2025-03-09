@@ -1,6 +1,5 @@
 package tacos.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Persistable;
 
 import lombok.AccessLevel;
@@ -9,10 +8,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
 public class Ingredient implements Persistable<String>{
-	@Id
+//	@Id
 	private final String id;
 	private final String name;
 	private final Type type;
