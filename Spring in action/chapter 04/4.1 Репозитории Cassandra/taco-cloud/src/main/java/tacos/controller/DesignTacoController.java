@@ -1,6 +1,5 @@
 package tacos.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +19,7 @@ import tacos.model.Ingredient;
 import tacos.model.Ingredient.Type;
 import tacos.model.Taco;
 import tacos.model.TacoOrder;
+import tacos.model.udt.TacoUDT;
 import tacos.repository.IngredientRepository;
 
 @Slf4j
@@ -61,7 +61,7 @@ public class DesignTacoController {
 	}
 	
 	@PostMapping
-	public String processTaco(@Valid Taco taco,
+	public String processTaco(@Valid TacoUDT taco,
 			Errors errors,
 			@ModelAttribute TacoOrder tacoOrder) {
 		
