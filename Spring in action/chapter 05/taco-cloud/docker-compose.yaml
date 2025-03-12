@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    container_name: taco-cloud
+    depends_on:
+    - cassandra
+    environment:
+    - CASSANDRA_HOST=cassandra
+    - CASSANDRA_PORT=9042
+    ports:
+    - "8080:8080"
+    networks:
+      - cassandra-net
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    restart: always
+    ports:
+    - "9042:9042"
+    networks:
+    - cassandra-net
+networks:
+  cassandra-net:
+    name: cassandra-net
+    driver: bridge
