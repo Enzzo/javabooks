@@ -7,7 +7,7 @@ INSERT INTO ingredient (id, name, type)
 VALUES ('FLTO', 'Flour Tortilla', 'WRAP');
 
 INSERT INTO ingredient (id, name, type)
-VALUES ('COTO', 'Кукуруза Tortilla', 'WRAP');
+VALUES ('COTO', 'Corn Tortilla', 'WRAP');
 
 INSERT INTO ingredient (id, name, type)
 VALUES ('GRBF', 'Ground Beef', 'PROTEIN');

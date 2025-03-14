@@ -46,10 +46,12 @@ public class SecurityConfig {
 		)
 		.authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/design", "/orders").hasRole("USER")
-			.requestMatchers("/", "/**").permitAll();
+			.requestMatchers("/", "/**", "/h2-console/**").permitAll();
 		})
 		.formLogin(form -> 
 			form.loginPage("/login").permitAll().defaultSuccessUrl("/design", true)
+		)
+		.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())
 		);
 		return http.build();
 	}
