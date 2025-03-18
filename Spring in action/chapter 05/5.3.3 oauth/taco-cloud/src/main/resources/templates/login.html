@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+<title>login</title>
+</head>
+<body>
+	<h1>login:</h1>
+	<img th:src="@{/images/TacoCloud.png}" />
+	<div th:if="${error}">Unable to login. Check your username and password.</div>
+	<p>
+		New here? Click <a th:href="@{/register}">here </a>to register
+	</p>
+	
+	<form method="post" th:action="@{/login}" id="loginForm">
+		<div>
+			<label for="usr">Username:</label> <input type="text" id="usr" name="usr" />
+		</div>
+		<div>
+			<label for="pwd">Password:</label> <input type="password" id="pwd" name="pwd" />
+		</div>
+			<input type="submit" value="Login" />
+	</form>
+	<a th:href="@{/oauth2/authorization/google}">Sign in with google</a>
+	
+</body>
+</html>
