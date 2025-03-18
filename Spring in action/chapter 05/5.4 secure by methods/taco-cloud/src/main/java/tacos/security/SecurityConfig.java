@@ -2,7 +2,10 @@ package tacos.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +16,8 @@ import tacos.model.User;
 import tacos.repository.UserRepository;
 
 @Configuration
-public class SecurityConfig {
+@EnableMethodSecurity
+public class SecurityConfig{
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -46,6 +50,7 @@ public class SecurityConfig {
 		)
 		.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/design", "/orders").hasRole("USER")
+				.requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
 				.requestMatchers("/", "/**", "/h2-console/**", "/login").permitAll()
 		)
 		.formLogin(form -> form
