@@ -47,6 +47,7 @@ public class SecurityConfig{
 		http
 		.csrf(csrf -> csrf
 				.ignoringRequestMatchers("/h2-console/**")
+				.disable()
 		)
 		.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/design", "/orders").hasRole("USER")

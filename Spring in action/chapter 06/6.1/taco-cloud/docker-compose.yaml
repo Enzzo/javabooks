@@ -3,23 +3,22 @@ services:
     build: .
     container_name: taco-cloud
     depends_on:
-    - cassandra
+    - mysql
     environment:
-    - CASSANDRA_HOST=cassandra
-    - CASSANDRA_PORT=9042
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
     - "8080:8080"
-    networks:
-      - cassandra-net
-  cassandra:
-    image: cassandra:latest
-    container_name: cassandra
+  mysql:
+    image: mysql:latest
+    container_name: mysql
     restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
     ports:
-    - "9042:9042"
-    networks:
-    - cassandra-net
-networks:
-  cassandra-net:
-    name: cassandra-net
-    driver: bridge
+    - ${MYSQL_PORT}:3306
+    volumes:
+    - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
+    
