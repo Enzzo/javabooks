@@ -25,7 +25,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "taco_orders")
+@Table(name = "Taco_Order")
 public class TacoOrder implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class TacoOrder implements Serializable{
 	@CreditCardNumber(message = "Not a valid credit card number")
 	private String ccNumber;
 	
-	@Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([2-9][0-9])$",
+	@Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([2-9][0-9][2-9][0-9])$",
 			message="Must be formatted MM/YY")
 	private String ccExpiration;
 	

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS taco_order CASCADE;
+DROP TABLE IF EXISTS taco_order;
 DROP TABLE IF EXISTS taco;
 DROP TABLE IF EXISTS ingredient_ref;
 DROP TABLE IF EXISTS ingredient;
@@ -20,8 +20,8 @@ CREATE TABLE taco_order(
 CREATE TABLE taco(
 	id IDENTITY,
 	name varchar(50) NOT NULL,
-	taco_order bigint NOT NULL,
-	taco_order_key bigint NOT NULL,
+--	taco_order bigint NOT NULL,
+--	taco_order_key bigint NOT NULL,
 	created_at timestamp NOT NULL,
 	PRIMARY key(id)
 );
@@ -39,8 +39,8 @@ CREATE TABLE ingredient(
 	PRIMARY key(id)
 );
 
-ALTER TABLE taco
-ADD FOREIGN KEY (taco_order) REFERENCES taco_order(id);
+-- ALTER TABLE taco
+-- ADD FOREIGN KEY (taco_order) REFERENCES taco_order(id);
 
 ALTER TABLE ingredient_ref
 ADD FOREIGN KEY (ingredient) REFERENCES ingredient(id);

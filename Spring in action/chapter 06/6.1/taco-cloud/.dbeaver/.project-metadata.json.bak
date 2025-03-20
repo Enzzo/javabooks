@@ -1,1 +1,1 @@
-{"resources":{"src/main/resources/data.sql":{"default-schema":"PUBLIC","default-datasource":"h2_embedded_v2-1955db10799-5124ffcf8b5ec2ff"},"src/main/resources/schema.sql":{"default-schema":"PUBLIC","default-datasource":"h2_embedded_v2-1955db10799-5124ffcf8b5ec2ff"}}}
+{"resources":{"src/main/resources/data.sql":{"default-schema":"PUBLIC","default-datasource":"h2_embedded_v2-19592c0528f-345ebbbc5733bb50"},"src/main/resources/schema.sql":{"default-datasource":"mysql8-195b52e405c-15aa3ce51b1b0a31","default-catalog":"tacodb"}}}

@@ -1,4 +1,38 @@
 {
 	"folders": {},
-	"connections": {}
+	"connections": {
+		"mysql8-195b52e405c-15aa3ce51b1b0a31": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "tacodb",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "tacodb",
+				"url": "jdbc:mysql://localhost:3306/tacodb",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
 }
