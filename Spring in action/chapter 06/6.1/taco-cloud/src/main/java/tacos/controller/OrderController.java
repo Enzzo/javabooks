@@ -35,7 +35,7 @@ public class OrderController {
 	}
 
 	@PostMapping
-	public String processOrder(@Valid TacoOrder order, 
+	public String processOrder(@Valid TacoOrder tacoOrder, 
 			Errors errors,
 			SessionStatus sessionStatus,
 			@AuthenticationPrincipal User user) {
@@ -44,9 +44,9 @@ public class OrderController {
 			return "orderForm";
 		}
 		
-		order.setUser(user);
+		tacoOrder.setUser(user);
 		
-		orderRepo.save(order);
+		orderRepo.save(tacoOrder);
 		sessionStatus.setComplete();
 		return "redirect:/";
 	}

@@ -42,7 +42,8 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilter(HttpSecurity http) throws Exception{
 		http
 		.csrf(csrf -> csrf
-				.ignoringRequestMatchers("/h2-console/**")
+				.disable()
+//				.ignoringRequestMatchers("/h2-console/**")
 		)
 		.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/design", "/orders").hasRole("USER")

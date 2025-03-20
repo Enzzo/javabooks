@@ -70,7 +70,7 @@
 		
 		<label for="ccCVV">CVV:</label>
 		<input type="text" id="ccCVV" th:field="*{ccCVV}"/>
-		<span class="validationError"
+		<span class="validationError" 
 			th:if="${#fields.hasErrors('ccCVV')}"
 			th:errors="*{ccCVV}">CVV Error</span>
 		<br/>

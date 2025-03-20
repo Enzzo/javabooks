@@ -19,7 +19,7 @@ import lombok.Data;
 public class Taco {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private Date createdAt;

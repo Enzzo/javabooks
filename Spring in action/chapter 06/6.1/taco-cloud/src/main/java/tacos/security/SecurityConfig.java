@@ -41,36 +41,36 @@ public class SecurityConfig{
 			throw new UsernameNotFoundException("User '" + username + "' not found");
 		};
 	}
-//	
-//	@Bean
-//	SecurityFilterChain securityFilter(HttpSecurity http) throws Exception{
-//		http
-//		.csrf(csrf -> csrf
-//				.ignoringRequestMatchers("/h2-console/**")
-//				.disable()
-//		)
-//		.authorizeHttpRequests(auth -> auth
-//				.requestMatchers("/design", "/orders").hasRole("USER")
-//				.requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
-//				.requestMatchers("/", "/**", "/h2-console/**", "/login").permitAll()
-//		)
-//		.formLogin(form -> form
-//				.loginPage("/login")
-////				TODO: Эта хрень не работает. Не хватает эндпоинта
-////				.loginProcessingUrl("/authenticate")
-//				.usernameParameter("usr")
-//				.passwordParameter("pwd")
-//				.defaultSuccessUrl("/design", true)
-//		)
-//		.oauth2Login(login -> login
-//				.loginPage("/login")
-//				.defaultSuccessUrl("/design", true))
-//		.headers(headers -> headers
-//				.frameOptions(frameOptions -> frameOptions.sameOrigin())
-//		)
-//		.logout(logout -> logout
-//				.logoutSuccessUrl("/")
-//		);
-//		return http.build();
-//	}
+	
+	@Bean
+	SecurityFilterChain securityFilter(HttpSecurity http) throws Exception{
+		http
+		.csrf(csrf -> csrf
+				.ignoringRequestMatchers("/h2-console/**")
+				.disable()
+		)
+		.authorizeHttpRequests(auth -> auth
+				.requestMatchers("/design", "/orders").hasRole("USER")
+				.requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
+				.requestMatchers("/", "/**", "/h2-console/**", "/login").permitAll()
+		)
+		.formLogin(form -> form
+				.loginPage("/login")
+//				TODO: Эта хрень не работает. Не хватает эндпоинта
+//				.loginProcessingUrl("/authenticate")
+				.usernameParameter("usr")
+				.passwordParameter("pwd")
+				.defaultSuccessUrl("/design", true)
+		)
+		.oauth2Login(login -> login
+				.loginPage("/login")
+				.defaultSuccessUrl("/design", true))
+		.headers(headers -> headers
+				.frameOptions(frameOptions -> frameOptions.sameOrigin())
+		)
+		.logout(logout -> logout
+				.logoutSuccessUrl("/")
+		);
+		return http.build();
+	}
 }
