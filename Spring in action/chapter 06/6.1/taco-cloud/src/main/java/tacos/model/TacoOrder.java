@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +25,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "taco_orders")
 public class TacoOrder implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -55,9 +59,10 @@ public class TacoOrder implements Serializable{
 	private String ccExpiration;
 	
 	@Digits(integer=3, fraction=0, message="Invalid CCV")
+	@Column(name = "cc_cvv")
 	private String ccCVV;
 	
-	@ManyToMany(targetEntity = Taco.class)
+	@ManyToMany(cascade = CascadeType.ALL, targetEntity = Taco.class)
 	@NotNull
 	private List<Taco> tacos = new ArrayList<>();
 	

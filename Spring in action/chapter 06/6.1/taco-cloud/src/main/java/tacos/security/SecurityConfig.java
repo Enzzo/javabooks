@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,14 +21,6 @@ public class SecurityConfig{
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-//	@Bean
-//	UserDetailsService userDetailsService(PasswordEncoder encoder) {
-//		List<UserDetails> userList = new ArrayList<>();
-//		userList.add(new User("buzz", encoder.encode("123"), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
-//		userList.add(new User("woody", encoder.encode("321"), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
-//		return new InMemoryUserDetailsManager(userList);
-//	}
 	
 	@Bean
 	UserDetailsService userDetailsService(UserRepository userRepo) {
@@ -56,8 +47,6 @@ public class SecurityConfig{
 		)
 		.formLogin(form -> form
 				.loginPage("/login")
-//				TODO: Эта хрень не работает. Не хватает эндпоинта
-//				.loginProcessingUrl("/authenticate")
 				.usernameParameter("usr")
 				.passwordParameter("pwd")
 				.defaultSuccessUrl("/design", true)
