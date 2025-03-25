@@ -41,7 +41,7 @@ public class User implements UserDetails{
 	private final String zip;
 	private final String phoneNumber;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private List<TacoOrder> orderList;
 	
 	@Override

@@ -1,16 +1,15 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-195b52e405c-15aa3ce51b1b0a31": {
+		"mysql8-195be19d07f-3c6d17ec9d477af2": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "tacodb",
+			"name": "localhost 2",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "tacodb",
-				"url": "jdbc:mysql://localhost:3306/tacodb",
+				"url": "jdbc:mysql://localhost:3306/",
 				"configurationType": "MANUAL",
 				"home": "mysql_client",
 				"type": "dev",

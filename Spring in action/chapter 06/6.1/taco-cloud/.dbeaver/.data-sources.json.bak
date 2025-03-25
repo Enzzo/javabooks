@@ -1,16 +1,36 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-195b529f805-3101468487b4b92": {
+		"mysql8-195bc6b5c30-4ff9980490dd73e8": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "tacodb",
+			"name": "localhost",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "tacodb",
-				"url": "jdbc:mysql://localhost:3306/tacodb",
+				"url": "jdbc:mysql://localhost:3306/?allowPublicKeyRetrieval\u003dtrue",
+				"configurationType": "URL",
+				"home": "mysql_client",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"properties": {
+					"rewriteBatchedStatements": "true",
+					"connectTimeout": "20000",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2,TLSv1.3"
+				},
+				"auth-model": "native"
+			}
+		},
+		"mysql8-195be19d07f-3c6d17ec9d477af2": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost 2",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
 				"configurationType": "MANUAL",
 				"home": "mysql_client",
 				"type": "dev",

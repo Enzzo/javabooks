@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
@@ -67,6 +68,7 @@ public class TacoOrder implements Serializable{
 	private List<Taco> tacos = new ArrayList<>();
 	
 	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	public TacoOrder() {
