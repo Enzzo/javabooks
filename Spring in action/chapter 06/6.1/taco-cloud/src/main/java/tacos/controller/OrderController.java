@@ -35,7 +35,7 @@ public class OrderController {
 			Model model
 			) {
 		model.addAttribute("user", user.getFullname());
-		model.addAttribute("orders", orderRepo.findByUserOrderListOrderByPlacedAtDesc(user));
+		model.addAttribute("orders", orderRepo.findByUser(user));
 		return "orderList";
 	}
 	

@@ -1,0 +1,37 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_server-1960977d47d-57106f2c06cfd031": {
+			"provider": "h2",
+			"driver": "h2_server",
+			"name": "hdb",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "9092",
+				"database": "hdb",
+				"url": "jdbc:h2:mem:hdb",
+				"configurationType": "URL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}

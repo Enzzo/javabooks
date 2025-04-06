@@ -8,5 +8,6 @@ import tacos.model.TacoOrder;
 import tacos.model.User;
 
 public interface OrderRepository extends CrudRepository<TacoOrder, Long>{
-	List<TacoOrder> findByUserOrderListOrderByPlacedAtDesc(User user);
+	// List<TacoOrder> findByUserOrderByPlacedAtDesc(User user);
+	List<TacoOrder> findByUser(User user);
 }
