@@ -121,5 +121,4 @@ public class TransactionManagerSetup {
         datasource.close();
         TransactionManagerServices.getTransactionManager().shutdown();
     }
-
 }
