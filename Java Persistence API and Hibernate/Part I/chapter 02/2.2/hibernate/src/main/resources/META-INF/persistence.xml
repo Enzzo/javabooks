@@ -7,7 +7,7 @@
 	
 	<persistence-unit name="HelloWorldPU"> <!-- настройка единицы хранения -->
 		<jta-data-source>myDS</jta-data-source> <!-- соединение с базой данных -->
-		<class>ru.vasilev.model.helloworld.Message</class> <!-- классы, хранимые в базе данных -->
+		<class>ru.vasilev.hibernate.model.Message</class> <!-- классы, хранимые в базе данных -->
 		<exclude-unlisted-classes>true</exclude-unlisted-classes> <!-- запретить поиск отображаемых классов -->
 		<properties>
 			<property

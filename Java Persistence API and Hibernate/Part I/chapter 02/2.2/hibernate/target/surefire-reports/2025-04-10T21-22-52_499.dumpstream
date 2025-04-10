@@ -1,4 +1,4 @@
-# Created at 2025-04-06T23:35:44.903
+# Created at 2025-04-10T21:22:52.710
 Boot Manifest-JAR contains absolute paths in classpath 'D:\dev\java\javabooks\Java Persistence API and Hibernate\Part I\chapter 02\2.2\hibernate\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root
