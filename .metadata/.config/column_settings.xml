@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="NodeList/MySQLTable">
+		<column name="Название" visible="true" order="0" width="105"/>
+		<column name="Движок" visible="true" order="1" width="100"/>
+		<column name="Авто-увеличение" visible="true" order="2" width="110"/>
+		<column name="Размер" visible="true" order="3" width="100"/>
+		<column name="Partitioned" visible="true" order="4" width="100"/>
+		<column name="Описание" visible="true" order="5" width="100"/>
+	</item>
+	<item id="SchemaSelector">
+		<column name="Схема" visible="true" order="0" width="100"/>
+	</item>
+	<item id="Suggestion/NodeList/GenericTableColumn">
+		<column name="Название" visible="true" order="0" width="114"/>
+		<column name="#" visible="true" order="1" width="50"/>
+		<column name="Тип Данных" visible="false" order="2" width="133"/>
+		<column name="Длина" visible="false" order="3" width="100"/>
+		<column name="Масштаб" visible="false" order="4" width="100"/>
+		<column name="Not Null" visible="false" order="5" width="100"/>
+		<column name="Авто генерация" visible="false" order="6" width="100"/>
+		<column name="Auto увеличение" visible="false" order="7" width="108"/>
+		<column name="По умолчанию" visible="true" order="2" width="122"/>
+		<column name="Описание" visible="true" order="3" width="92"/>
+	</item>
+	<item id="Suggestion/NodeList/MySQLTableColumn">
+		<column name="Название" visible="true" order="0" width="105"/>
+		<column name="#" visible="true" order="1" width="52"/>
+		<column name="Тип данных" visible="true" order="2" width="103"/>
+		<column name="Not NULL" visible="false" order="3" width="100"/>
+		<column name="Авто-увеличение" visible="false" order="4" width="110"/>
+		<column name="Ключ" visible="false" order="5" width="100"/>
+		<column name="По умолчанию" visible="false" order="6" width="100"/>
+		<column name="Дополнительно" visible="false" order="7" width="102"/>
+		<column name="Выражение" visible="false" order="8" width="100"/>
+		<column name="Комментарий" visible="true" order="3" width="116"/>
+	</item>
+</items>

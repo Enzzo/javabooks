@@ -1,0 +1,5 @@
+package ru.vasilev.hibernate.shared;
+
+public class ImprovedH2Dialect {
+
+}

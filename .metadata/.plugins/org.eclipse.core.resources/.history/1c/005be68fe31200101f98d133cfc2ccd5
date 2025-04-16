@@ -1,0 +1,27 @@
+package ru.vasilev.hibernate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+
+import ru.vasilev.hibernate.env.TransactionManagerTest;
+import ru.vasilev.hibernate.model.Message;
+
+/**
+ * Hello world!
+ */
+public class App {
+    public static void main(String[] args) throws NotSupportedException, SystemException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("HelloWorldPU");
+        
+        UserTransaction tx = TransactionManagerTest.TM.getUserTransaction();
+        tx.begin();
+        EntityManager em = emf.createEntityManager();
+        
+        Message message = new Message();
+        message.setText("Hello world");
+    }
+}

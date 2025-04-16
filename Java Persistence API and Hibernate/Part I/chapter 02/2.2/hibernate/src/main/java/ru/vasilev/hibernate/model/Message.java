@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 public class Message {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long id;
 	
 	private String text;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drivers>
+	<provider id="h2">
+		<driver id="h2_server" category="H2" categories="sql" name="H2 Server" class="org.h2.Driver" url="jdbc:h2:tcp://{host}[:{port}]/{database}" port="9092" description="H2 Server" custom="false">
+			<library type="jar" path="maven:/com.h2database:h2:RELEASE" custom="false" version="2.1.210">
+				<file id="com.h2database:h2:RELEASE" version="2.1.210" path="${drivers_home}\maven\maven-central\com.h2database\h2-2.1.210.jar"/>
+			</library>
+			<library type="license" path="https://raw.githubusercontent.com/h2database/h2database/master/LICENSE.txt" custom="false">
+				<file id="https://raw.githubusercontent.com/h2database/h2database/master/LICENSE.txt" path="${drivers_home}\remote\h2database\h2database\master\LICENSE.txt"/>
+			</library>
+		</driver>
+	</provider>
+	<provider id="mysql">
+		<driver id="mysql8" categories="sql" name="MySQL" class="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://{host}[:{port}]/[{database}]" port="3306" defaultUser="root" description="Driver for MySQL 8 and later" custom="false">
+			<library type="jar" path="maven:/com.mysql:mysql-connector-j:RELEASE" custom="false" version="8.2.0">
+				<file id="com.mysql:mysql-connector-j:RELEASE" version="8.2.0" path="${drivers_home}\maven\maven-central\com.mysql\mysql-connector-j-8.2.0.jar"/>
+				<file id="com.google.protobuf:protobuf-java:3.21.9" version="3.21.9" path="${drivers_home}\maven\maven-central\com.google.protobuf\protobuf-java-3.21.9.jar"/>
+			</library>
+			<library type="license" path="licenses/external/gnu3.txt" custom="false"/>
+			<parameter name="cache-meta-data" value="true"/>
+		</driver>
+	</provider>
+</drivers>

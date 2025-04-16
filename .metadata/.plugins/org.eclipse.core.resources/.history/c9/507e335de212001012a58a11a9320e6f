@@ -1,0 +1,15 @@
+package ru.vasilev.hibernate;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.transaction.UserTransaction;
+
+/**
+ * Hello world!
+ */
+public class App {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("HelloWorldPU");
+        UserTransaction tx = TM.getUserTransaction();
+    }
+}

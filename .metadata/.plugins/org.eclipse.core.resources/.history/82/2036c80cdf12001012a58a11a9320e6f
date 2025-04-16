@@ -1,0 +1,5 @@
+package ru.vasilev.hibernate.model.helloworld;
+
+public class Message {
+
+}

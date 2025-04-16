@@ -1,0 +1,5 @@
+package ru.vasilev.hibernate.env;
+
+public class DatabaseProduct {
+
+}

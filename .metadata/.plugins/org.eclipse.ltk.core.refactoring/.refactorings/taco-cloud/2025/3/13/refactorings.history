@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;logback.xml&apos; to &apos;taco-cloud&apos;" description="Move &apos;logback.xml&apos; to &apos;taco-cloud&apos;" destination="/taco-cloud" element1="src/main/resources/logback.xml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1742815068962" updateReferences="true"/>
+</session>
