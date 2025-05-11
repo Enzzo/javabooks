@@ -1,12 +1,12 @@
 package ru.vasilev.hibernate;
 
 import java.time.LocalDateTime;
+import java.util.function.Consumer;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import junit.framework.TestCase;
 import ru.vasilev.hibernate.model.Message;
 
@@ -14,39 +14,45 @@ import ru.vasilev.hibernate.model.Message;
  * Unit test for simple App.
  */
 public class AppTest extends TestCase{
-	private SessionFactory sessionFactory;
+	private EntityManagerFactory entityManagerFactory;
 	
 	@Override
 	protected void setUp() {
-		final StandardServiceRegistry registry = 
-				new StandardServiceRegistryBuilder().build();
-		try {
-			sessionFactory = 
-					new MetadataSources(registry)
-					.addAnnotatedClass(Message.class)
-					.buildMetadata()
-					.buildSessionFactory();
-		}
-		catch(Exception e) {
-			StandardServiceRegistryBuilder.destroy(registry);
-		}
+		entityManagerFactory = Persistence.createEntityManagerFactory("HelloWorldPU");
 	}
 	
 	@Override
 	protected void tearDown() {
-		if(sessionFactory != null) {
-			sessionFactory.close();
+		entityManagerFactory.close();
+	}
+	
+	void inTransaction(Consumer<EntityManager> work) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		try {
+			transaction.begin();
+			work.accept(entityManager);
+			transaction.commit();
+		}
+		catch(Exception e) {
+			if(transaction.isActive()) {
+				transaction.rollback();
+			}
+			throw e;
+		}
+		finally {
+			entityManager.close();
 		}
 	}
 	
 	public void testBasicUsage() {
-		sessionFactory.inTransaction(session -> {
-			session.persist(new Message("Hello world", LocalDateTime.now()));
-			session.persist(new Message("Hello again", LocalDateTime.now()));
+		inTransaction(entityManager -> {
+			entityManager.persist(new Message("Hello world", LocalDateTime.now()));
+			entityManager.persist(new Message("Hello again", LocalDateTime.now()));
 		});
 		
-		sessionFactory.inTransaction(session -> {
-			session.createSelectionQuery("from Message", Message.class).getResultList()
+		inTransaction(entityManager -> {
+			entityManager.createQuery("select m from Message m", Message.class).getResultList()
 			.forEach(message -> System.out.println("Message (" + message.getDate() + ") : " + message.getMessage()));
 		});
 	}
