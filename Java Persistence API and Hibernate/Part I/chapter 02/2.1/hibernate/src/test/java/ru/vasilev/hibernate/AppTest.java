@@ -3,6 +3,8 @@ package ru.vasilev.hibernate;
 import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
+import bitronix.tm.BitronixTransactionManager;
+import bitronix.tm.TransactionManagerServices;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -14,20 +16,26 @@ import ru.vasilev.hibernate.model.Message;
  * Unit test for simple App.
  */
 public class AppTest extends TestCase{
-	private EntityManagerFactory entityManagerFactory;
+	private EntityManagerFactory emf;
+	private BitronixTransactionManager btm = TransactionManagerServices.getTransactionManager();
 	
-	@Override
-	protected void setUp() {
-		entityManagerFactory = Persistence.createEntityManagerFactory("HelloWorldPU");
-	}
+
+@Override
+protected void setUp() throws Exception {
+    System.setProperty("java.naming.factory.initial", "bitronix.tm.jndi.BitronixInitialContextFactory");
+    btm = TransactionManagerServices.getTransactionManager();
+    emf = Persistence.createEntityManagerFactory("HelloWorldPU");
+    btm.begin();
+}
+
 	
 	@Override
 	protected void tearDown() {
-		entityManagerFactory.close();
+		emf.close();
 	}
 	
 	void inTransaction(Consumer<EntityManager> work) {
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityManager entityManager = emf.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();

@@ -1,1 +1,0 @@
-{"resources":{"src/main/resources/data.sql":{"default-datasource":"mysql8-195bc6b5c30-4ff9980490dd73e8","default-catalog":"tacodb"},"src/main/resources/schema.sql":{"default-datasource":"mysql8-195bc6b5c30-4ff9980490dd73e8","default-catalog":"tacodb"}}}

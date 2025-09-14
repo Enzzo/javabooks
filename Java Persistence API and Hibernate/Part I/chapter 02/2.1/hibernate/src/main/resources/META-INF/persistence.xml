@@ -9,7 +9,9 @@
 			Persistence unit for the "Hibernate In Action" javabook
 		</description>
 		
-		<class>ru.vasilev.hibernate.model.Message</class
+		<jta-data-source>myDS</jta-data-source>
+		
+		<class>ru.vasilev.hibernate.model.Message</class>
 		
 		<properties>
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:hwdb;DB_CLOSE_DELAY=-1" />
@@ -19,7 +21,8 @@
 			<property name="jakarta.persistence.schema-generation.database.action" value="create" />
 			
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.formate_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.highlight_sql" value="true" />
 		</properties>
 	</persistence-unit>
+</persistence>
