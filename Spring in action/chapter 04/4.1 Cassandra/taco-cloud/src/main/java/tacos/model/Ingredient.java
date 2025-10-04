@@ -14,10 +14,8 @@ import lombok.NoArgsConstructor;
 @Table("ingredients")
 public class Ingredient{
 	@PrimaryKey
-	private String id;
-	
-	private String name;
-	
+	private String id;	
+	private String name;	
 	private Type type;
 
 	public enum Type{

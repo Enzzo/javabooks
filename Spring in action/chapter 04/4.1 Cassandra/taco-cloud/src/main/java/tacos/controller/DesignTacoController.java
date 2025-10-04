@@ -1,5 +1,6 @@
 package tacos.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class DesignTacoController {
 
 	@ModelAttribute
 	public void addIngredientsToModel(Model model) {
-		List<Ingredient> ingredients = ingredientRepo.findAll();
+		Iterable<Ingredient> ingredients = ingredientRepo.findAll();
 		
 		Type[] types = Ingredient.Type.values();
 		for(Type type : types) {
@@ -58,23 +59,27 @@ public class DesignTacoController {
 	
 	@PostMapping
 	public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
-		log.debug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		log.debug("TACO: {}", taco);
 		if(errors.hasErrors()) {
 			return "design";
 		}
-		
 		tacoOrder.addTaco(taco);
 		log.info("Processing taco {}", taco);
 		return "redirect:/orders/current";
 	}
 	
-	private Iterable<Ingredient> filterByType(
-		List<Ingredient> ingredients,
+	private List<Ingredient> filterByType(
+		Iterable<Ingredient> ingredients,
 		Type type)
 	{
-		return ingredients.stream()
-				.filter(ing -> ing.getType().equals(type))
-				.toList();
+		List<Ingredient> result = new ArrayList<>();
+		
+		ingredients.forEach(ing -> {
+			if(ing.getType().equals(type)) {
+				result.add(ing);
+			}
+		});
+		return result;
+		
 	}
 }
