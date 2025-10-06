@@ -22,15 +22,19 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		return http
+			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(auth -> auth
-//				.requestMatchers("/design", "/orders").hasRole("USER")
-				.requestMatchers("/", "/**", "/design", "/orders").permitAll()
+				.requestMatchers("/design", "/orders").hasRole("USER")
+				.requestMatchers("/", "/**").permitAll()
 			)
 			.formLogin(form -> form
 				.loginPage("/login")
 				.usernameParameter("usr")
 				.passwordParameter("pwd")
 				.defaultSuccessUrl("/design", true))
+			.headers(headers -> headers
+					.frameOptions(frameOptions -> frameOptions.sameOrigin())
+			)
 			.build();
 	}
 	

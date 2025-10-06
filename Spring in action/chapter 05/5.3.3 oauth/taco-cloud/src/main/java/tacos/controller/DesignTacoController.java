@@ -54,12 +54,15 @@ public class DesignTacoController {
 	
 	@GetMapping
 	public String showDesignForm() {
+		log.debug("GET /design");
 		return "design";
 	}
 	
 	@PostMapping
 	public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
-		log.debug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TACO {}", taco);
+		log.debug("POST /design");
+		log.debug("TACO: {}", taco);
+		
 		if(errors.hasErrors()) {
 			return "design";
 		}

@@ -32,6 +32,8 @@ public class OrderController {
 	
 	@PostMapping
 	public String processOrder(@Valid TacoOrder order, Errors errors, SessionStatus sessionStatus) {
+		log.debug("POST /orders");
+		log.debug("Order: {}", order);
 		if(errors.hasErrors()) {
 			return "orderForm";
 		}
