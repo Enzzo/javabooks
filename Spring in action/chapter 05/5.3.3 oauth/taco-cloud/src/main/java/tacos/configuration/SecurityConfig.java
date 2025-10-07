@@ -33,6 +33,7 @@ public class SecurityConfig {
 				.usernameParameter("usr")
 				.passwordParameter("pwd")
 				.defaultSuccessUrl("/design", true))
+			.oauth2Login(oauth2 -> oauth2.loginPage("/login"))
 			.headers(headers -> headers
 					.frameOptions(FrameOptionsConfig::sameOrigin)
 			)
