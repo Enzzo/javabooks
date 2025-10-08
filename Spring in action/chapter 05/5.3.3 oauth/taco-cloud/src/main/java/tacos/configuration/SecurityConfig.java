@@ -23,7 +23,7 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		return http
-			.csrf(csrf -> csrf.disable())
+			//.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/design", "/orders").hasRole("USER")
 				.requestMatchers("/", "/**").permitAll()
@@ -32,10 +32,16 @@ public class SecurityConfig {
 				.loginPage("/login")
 				.usernameParameter("usr")
 				.passwordParameter("pwd")
-				.defaultSuccessUrl("/design", true))
-			.oauth2Login(oauth2 -> oauth2.loginPage("/login"))
+				.defaultSuccessUrl("/design", true)
+				)
+			.oauth2Login(oauth2 -> oauth2
+				.loginPage("/login")
+				)
+			.logout(logout -> logout
+				.logoutSuccessUrl("/")
+				)
 			.headers(headers -> headers
-					.frameOptions(FrameOptionsConfig::sameOrigin)
+				.frameOptions(FrameOptionsConfig::sameOrigin)
 			)
 			.build();
 	}
