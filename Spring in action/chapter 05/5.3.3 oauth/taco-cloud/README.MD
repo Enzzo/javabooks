@@ -20,4 +20,16 @@
 	<li>
 		Для того, чтобы CSRF-защита пропускала на страницы, в формах обязательно должны быть th:action и th:object
 	</li>
+	<li>
+		Выполнение метода под конкретной ролью можно настроить несколькими способами:<br />
+		<ul>
+			<li>
+				В конфиге SecurityConfig
+			</li>
+			<li>
+				Повесить на метод контроллера аннотацию <b>@PreAuthorize</b><br />
+				Для этого на <b>SecurityConfig</b> придётся повесить аннотацию <b>@EnableGlobalMethodSecurity</b> и унаследовать этот класс от <b>WebSecurityConfigurerAdapter</b>
+			</li>
+		</ul>
+	</li>
 </ul>
